@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from 'react'
+import LoadingBar from 'react-top-loading-bar'
 
-function App() {
+const App = () => {
+  const ref = useRef(null)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <LoadingBar color='#f11946' ref={ref} />
+      <button onClick={() => ref.current.continuousStart()}>
+        Start Continuous Loading Bar
+      </button>
+      <button onClick={() => ref.current.staticStart()}>
+        Start Static Loading Bar
+      </button>
+      <button onClick={() => ref.current.complete()}>Complete</button>
+      <br />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
